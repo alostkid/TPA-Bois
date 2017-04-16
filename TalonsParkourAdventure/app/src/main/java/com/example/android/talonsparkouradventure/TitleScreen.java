@@ -1,18 +1,20 @@
 package com.example.android.talonsparkouradventure;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends AppCompatActivity {
+public class TitleScreen extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -87,7 +89,7 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_fullscreen);
+        setContentView(R.layout.activity_title_screen);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -108,6 +110,55 @@ public class FullscreenActivity extends AppCompatActivity {
         findViewById(R.id.play_game_button).setOnTouchListener(mDelayHideTouchListener);
         findViewById(R.id.skins_button).setOnTouchListener(mDelayHideTouchListener);
         findViewById(R.id.about_button).setOnTouchListener(mDelayHideTouchListener);
+    }
+
+    // TODO:
+    // EFFECTS: spawn frog that kermits
+    private void titleButton () {
+        Button playGame = (Button) findViewById(R.id.play_game_button);
+
+        playGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TitleScreen.this, SIGame.class));
+            }
+        });
+    }
+
+    // EFFECTS: starts SIGame / starts the game
+    private void playGameButton () {
+        Button playGame = (Button) findViewById(R.id.play_game_button);
+
+        playGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TitleScreen.this, SIGame.class));
+            }
+        });
+    }
+
+    // EFFECTS: go to SkinsScreen
+    private void skinsButton () {
+        Button playGame = (Button) findViewById(R.id.skins_button);
+
+        playGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TitleScreen.this, SkinsScreen.class));
+            }
+        });
+    }
+
+    // EFFECTS: go to AboutScreen
+    private void aboutButton () {
+        Button playGame = (Button) findViewById(R.id.about_button);
+
+        playGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TitleScreen.this, AboutScreen.class));
+            }
+        });
     }
 
     @Override
