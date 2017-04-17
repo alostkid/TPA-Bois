@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cute_talon_no_title_bg"
-    tools:context="com.example.android.talonsparkouradventure.TitleScreen">
+    tools:context="com.example.android.talonsparkouradventure.MenuUi.TitleScreen">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -46,8 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/skins_button"
         android:layout_below="@+id/skins_button"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:fontFamily="casual"
-        android:text="About"
+        android:onClick="aboutButton"
+        android:text="@string/about"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/black"
         android:textSize="30sp" />
@@ -59,8 +61,10 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/play_game_button"
         android:layout_below="@+id/play_game_button"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:elevation="0dp"
         android:fontFamily="casual"
+        android:onClick="skinsButton"
         android:text="Skins"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/black"
@@ -74,8 +78,10 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="25dp"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:elevation="0dp"
         android:fontFamily="casual"
+        android:onClick="playGameButton"
         android:text="Play Game"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/black"
@@ -93,6 +99,7 @@
         android:textColor="@android:color/black"
         android:textSize="40sp"
         android:layout_above="@+id/play_game_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="titleButton"/>
 
 </RelativeLayout>

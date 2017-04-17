@@ -1,20 +1,22 @@
-package com.example.android.talonsparkouradventure;
+package com.example.android.talonsparkouradventure.Game.Game;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+
+import com.example.android.talonsparkouradventure.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class TitleScreen extends AppCompatActivity {
+public class Game extends AppCompatActivity {
+
+    private boolean isGameOver;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -31,7 +33,7 @@ public class TitleScreen extends AppCompatActivity {
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
      */
-    private static final int UI_ANIMATION_DELAY = 300;
+    private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
@@ -89,7 +91,7 @@ public class TitleScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_title_screen);
+        setContentView(R.layout.activity_game);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -100,66 +102,17 @@ public class TitleScreen extends AppCompatActivity {
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toggle();
+                jump();
             }
         });
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.play_game_button).setOnTouchListener(mDelayHideTouchListener);
-        findViewById(R.id.skins_button).setOnTouchListener(mDelayHideTouchListener);
-        findViewById(R.id.about_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
-    // TODO:
-    // EFFECTS: spawn frog that kermits
-    private void titleButton () {
-        Button playGame = (Button) findViewById(R.id.play_game_button);
 
-        playGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TitleScreen.this, SIGame.class));
-            }
-        });
-    }
-
-    // EFFECTS: starts SIGame / starts the game
-    private void playGameButton () {
-        Button playGame = (Button) findViewById(R.id.play_game_button);
-
-        playGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TitleScreen.this, SIGame.class));
-            }
-        });
-    }
-
-    // EFFECTS: go to SkinsScreen
-    private void skinsButton () {
-        Button playGame = (Button) findViewById(R.id.skins_button);
-
-        playGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TitleScreen.this, SkinsScreen.class));
-            }
-        });
-    }
-
-    // EFFECTS: go to AboutScreen
-    private void aboutButton () {
-        Button playGame = (Button) findViewById(R.id.about_button);
-
-        playGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TitleScreen.this, AboutScreen.class));
-            }
-        });
-    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -168,7 +121,15 @@ public class TitleScreen extends AppCompatActivity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+        hide();
+    }
+
+    @Override
+    protected void onPostResume() {
+
+        super.onPostResume();
+        hide();
+
     }
 
     private void toggle() {
@@ -213,4 +174,40 @@ public class TitleScreen extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+    // GAME CODE UNDER
+
+    // TODO:
+    // EFFECTS: look at the name
+    private void jump() {
+
+    }
+
+    //TODO:
+    // EFFECTS: tick function
+    public void update() {
+
+    }
+
+    //TODO:
+    // EFFECTS: response to certain actions (e.g: tap to jump)
+    public void eventResponse () {
+
+    }
+
+    // EFFECTS: returns if game is over
+    public boolean isOver () {return isGameOver;}
+
+    //TODO:
+    // EFFECTS: sets up clean game
+    private void setUp() {}
+
+    //TODO:
+    // EFFECTS: removes stuff off screen
+    private void checkStuff () {}
+
+    //TODO:
+    // EFFECTS: checks if player was hit by skill
+    private boolean checkMeHit () {return false;}
+
 }
+
