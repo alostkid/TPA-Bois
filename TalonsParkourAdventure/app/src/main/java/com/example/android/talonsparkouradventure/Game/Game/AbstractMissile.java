@@ -6,29 +6,27 @@ import android.media.Image;
  * Created by Gavin Ham on 4/16/2017.
  */
 
-public abstract class AbstractMissile{
+public abstract class AbstractMissile extends Object{
 
-    protected int x;
-    protected int y;
-    protected Image image;
+    protected int velocity;
 
-    // EFFECTS: constructs a missile with x and y value along with its given picture
-    public AbstractMissile (int x, int y, Image image) {
 
-        this.x = x;
-        this.y = y;
-        this.image = image;
+    public AbstractMissile(int x, int y, Image image, int velocity) {
+
+        super(x, y, image);
+        this.velocity = velocity;
 
     }
 
-    public int getX () {return x;}
+    @Override
+    public void draw() {
 
-    public int getY () {return y;}
+    }
 
-    // TODO:
-    // MODIFIES: this
-    // EFFECTS: moves the sprite
-    public abstract void draw ();
+    @Override
+    public void handleCollision() {
+
+    }
 
     // TODO:
     // EFFECTS: removes missile if it travels off the screen

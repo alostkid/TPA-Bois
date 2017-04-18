@@ -23,7 +23,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_alignTop="@+id/title_button"
+        android:layout_alignStart="@+id/title_button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="79dp">
 
         <RelativeLayout
             android:id="@+id/fullscreen_content_controls"
