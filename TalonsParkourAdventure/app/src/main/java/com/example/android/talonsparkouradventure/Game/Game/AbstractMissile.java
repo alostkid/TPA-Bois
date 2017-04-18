@@ -3,7 +3,7 @@ package com.example.android.talonsparkouradventure.Game.Game;
 import android.media.Image;
 
 /**
- * Created by Gavin Ham on 4/16/2017.
+ * AbstractMissile base
  */
 
 public abstract class AbstractMissile extends Object{
