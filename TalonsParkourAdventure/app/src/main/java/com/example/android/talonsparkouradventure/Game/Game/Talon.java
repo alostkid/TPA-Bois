@@ -2,9 +2,6 @@ package com.example.android.talonsparkouradventure.Game.Game;
 
 import android.media.Image;
 
-/**
- * Created by Gavin Ham on 4/17/2017.
- */
 
 // Main character
 
