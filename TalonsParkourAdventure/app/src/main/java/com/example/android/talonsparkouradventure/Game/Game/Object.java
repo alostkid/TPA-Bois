@@ -27,8 +27,5 @@ public abstract class Object {
     // EFFECTS: moves the sprite
     public abstract void draw ();
 
-    // TODO
-    // EFFECTS: handles what happens when hit another obstacle
-    public abstract void handleCollision ();
 
 }

@@ -3,15 +3,15 @@ package com.example.android.talonsparkouradventure.Game.Game;
 import android.media.Image;
 
 /**
- * AbstractMissile base
+ * AbstractEnemy base
  */
 
-public abstract class AbstractMissile extends Object{
+public abstract class AbstractEnemy extends Object{
 
     protected int velocity;
 
 
-    public AbstractMissile(int x, int y, Image image, int velocity) {
+    public AbstractEnemy(int x, int y, Image image, int velocity) {
 
         super(x, y, image);
         this.velocity = velocity;
@@ -23,14 +23,16 @@ public abstract class AbstractMissile extends Object{
 
     }
 
-    @Override
-    public void handleCollision() {
-
-    }
-
     // TODO:
     // EFFECTS: removes missile if it travels off the screen
     protected void handleBoundary () {
+
+    }
+
+    // EFFECTS: changes position by velocity
+    protected void move () {
+
+        x += velocity;
 
     }
 }

@@ -16,10 +16,6 @@ public class Talon extends Object {
     @Override
     public void draw() {
 
-    }
-
-    @Override
-    public void handleCollision() {
 
     }
 }
