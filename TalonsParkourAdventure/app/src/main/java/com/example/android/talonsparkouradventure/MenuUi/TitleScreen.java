@@ -2,6 +2,7 @@ package com.example.android.talonsparkouradventure.MenuUi;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Point;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.example.android.talonsparkouradventure.R;
  * status bar and navigation/system bar) with user interaction.
  */
 public class TitleScreen extends AppCompatActivity {
+    // these are for landscape
 
     public static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
@@ -46,6 +48,7 @@ public class TitleScreen extends AppCompatActivity {
         setContentView(R.layout.activity_title_screen);
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+
 
     }
 

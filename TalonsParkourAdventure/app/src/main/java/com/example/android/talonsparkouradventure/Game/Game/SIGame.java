@@ -38,9 +38,11 @@ public class SIGame {
 
     }
 
-    //TODO:
+    //TODO: insert objects that react to time
     // EFFECTS: tick function
     public void update() {
+
+        
 
     }
 
@@ -53,7 +55,7 @@ public class SIGame {
 
     //TODO:
     // EFFECTS: removes stuff off screen
-    private void checkStuff () {}
+    private void checkStuffOffScreen () {}
 
     //TODO:
     // EFFECTS: checks if player was hit by skill

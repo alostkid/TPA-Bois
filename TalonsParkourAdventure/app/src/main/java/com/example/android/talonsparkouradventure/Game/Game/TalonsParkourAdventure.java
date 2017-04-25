@@ -1,11 +1,15 @@
 package com.example.android.talonsparkouradventure.Game.Game;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Point;
+import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.android.talonsparkouradventure.R;
@@ -16,6 +20,11 @@ import com.example.android.talonsparkouradventure.R;
 public class TalonsParkourAdventure extends AppCompatActivity {
 
     private SIGame game;
+    private Image characterImage;
+    public int deviceHeight;
+    public int deviceWidth;
+    private Background background;
+
     /**
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
@@ -50,7 +59,7 @@ public class TalonsParkourAdventure extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        game = new SIGame();
+        game = new SIGame(characterImage);
 
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -60,6 +69,14 @@ public class TalonsParkourAdventure extends AppCompatActivity {
                 game.jump();
             }
         });
+
+        Point size = new Point();
+        getWindowManager().getDefaultDisplay().getSize(size);
+        deviceWidth = size.x;
+        deviceHeight = size.y;
+        background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.mario_bg_normal));
+
+
 
 
         // Upon interacting with UI controls, delay any scheduled hide()
@@ -97,5 +114,10 @@ public class TalonsParkourAdventure extends AppCompatActivity {
         mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
 
     }
+
+    public int getDeviceHeight () {return deviceHeight;}
+
+    public int getDeviceWidth () {return deviceWidth;}
+
 }
 
