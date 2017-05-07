@@ -17,11 +17,13 @@ public class Player extends AbstractObject {
     //motion speed of the character
 
     //constructor
-    public Player(Context context) {
-        super(context);
+    public Player(Context context, Bitmap bitmap) {
+        super(context, bitmap);
 
         //Getting bitmap from drawable resource
     }
+
+
 
     //Method to update coordinate of character
     @Override
@@ -29,5 +31,7 @@ public class Player extends AbstractObject {
         //updating x coordinate
         x++;
     }
+
+
 
 }

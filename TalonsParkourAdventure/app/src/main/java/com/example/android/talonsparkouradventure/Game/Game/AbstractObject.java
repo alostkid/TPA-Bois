@@ -10,15 +10,15 @@ import com.example.android.talonsparkouradventure.R;
  * Created by Gavin Ham on 5/6/2017.
  */
 
-abstract class AbstractObject {
+public abstract class AbstractObject {
     //Bitmap to get character from image
     protected Bitmap bitmap;
     //coordinates
     protected int x;
     protected int y;
 
-    AbstractObject(Context context) {
-        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.cute_talon_icon);
+    protected AbstractObject(Context context, Bitmap bitmap) {
+        this.bitmap = bitmap;
         y = 50;
         x = 75;
     }
@@ -27,7 +27,7 @@ abstract class AbstractObject {
     public abstract void update();
 
     /*
-        * These are getters you can generate it autmaticallyl
+        * These are getters you can generate it automatically
         * right click on editor -> generate -> getters
         * */
     public Bitmap getBitmap() {

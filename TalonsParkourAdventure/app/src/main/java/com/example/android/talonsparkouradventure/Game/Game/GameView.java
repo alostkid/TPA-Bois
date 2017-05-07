@@ -1,12 +1,16 @@
 package com.example.android.talonsparkouradventure.Game.Game;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+
+import com.example.android.talonsparkouradventure.Game.Game.Enemies.Wall;
+import com.example.android.talonsparkouradventure.R;
 
 /**
  * Created by Gavin Ham on 5/5/2017.
@@ -20,6 +24,8 @@ public class GameView extends SurfaceView implements Runnable {
     //adding the player to this class
     private Player player;
 
+    private Wall wall;
+
     //These objects will be used for drawing
     private Paint paint;
     private Canvas canvas;
@@ -29,7 +35,8 @@ public class GameView extends SurfaceView implements Runnable {
         super(context);
 
         //initializing player object
-        player = new Player(context);
+        player = new Player(context, BitmapFactory.decodeResource(context.getResources(),R.drawable.cute_talon_icon));
+        wall = new Wall(context, BitmapFactory.decodeResource(context.getResources(),R.drawable.mario_bg), 5);
 
         //initializing drawing objects
         surfaceHolder = getHolder();
@@ -46,11 +53,11 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
+
         while (playing) {
             update();
             draw();
             control();
-
 
         }
     }
@@ -58,6 +65,7 @@ public class GameView extends SurfaceView implements Runnable {
     private void update() {
         //updating player position
         player.update();
+        wall.update();
 
     }
 
@@ -68,16 +76,24 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = surfaceHolder.lockCanvas();
             //drawing a background color for canvas
             canvas.drawColor(Color.BLACK);
+
+            drawBitmap(wall);
             //Drawing the player
-            canvas.drawBitmap(
-                    player.getBitmap(),
-                    player.getX(),
-                    player.getY(),
-                    paint);
+            drawBitmap(player);
+
             //Unlocking the canvas
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }
+
+    private void drawBitmap (AbstractObject thing) {
+        canvas.drawBitmap(
+                thing.getBitmap(),
+                thing.getX(),
+                thing.getY(),
+                paint);
+    }
+
 
     private void control() {
         try {
